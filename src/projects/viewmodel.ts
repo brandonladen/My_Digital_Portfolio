@@ -123,7 +123,7 @@ export function getProjectWithStars(onFinish: (result: Project[]) => void) {
           }),
         );
       } else {
-        console.error(`Error fetching data for ${projects[index].name}`, result.reason);
+        console.error(`Error fetching data for ${projects[index].name}`);
         projects[index].stars = "?";
         projects[index].forks = "?";
         projects[index].contributors = [];
