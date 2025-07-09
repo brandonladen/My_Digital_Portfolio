@@ -12,7 +12,6 @@
       <li>My passion for backend development spans Django, Flask, and Node.js, while my frontend stack includes Vue.js and HTML/CSS.</li>
       <li>I value leadership and collaboration, often guiding peers in both tech and academic spaces.</li>
       <li>Above all, I’m driven by resilience, creativity, and a mindset of continuous learning and contribution.</li>
-      <li><a href="https://theothersideofsilence2.substack.com/">Beyond tech, I write stories and reflections about healing, emotional intelligence, and inner growth — because I believe engineers build better when they understand themselves.</a></li>
     </ul>
     </div>
   </section>
