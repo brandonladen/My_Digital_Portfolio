@@ -43,6 +43,12 @@ const { contact } = usePortFolioStore();
           <span class="contact-text">{{ contact.twitter.userName }}</span>
         </a>
       </li>
+      <li class="contact-item">
+        <a href="https://wa.me/254702499923?text=Hello%20Brandon" target="_blank" class="contact-link">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span class="contact-text">WhatsApp</span>
+        </a>
+      </li>
     </ul>
   </div>
 </template>

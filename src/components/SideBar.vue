@@ -39,6 +39,9 @@ onMounted(() => {
           <i class="fas fa-download"></i> Download CV
         </a>
       </div>
+      <hr>
+      <b>Fun Fact:</b>
+      <p class="fun-fact">I’m from Eldoret — land of champions — but my race is in tech, not track.</p>
     </div>
 
     <div class="sidebar-content">
@@ -51,6 +54,21 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.profile-container hr {
+  border: none;
+  border-top: 2px solid #42a8c0;
+  margin: 1.5rem 0;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.fun-fact {
+  font-size: 1rem;
+  color: #fff;
+  margin-top: 0.5rem;
+  font-weight: 400;
+}
+
 .sidebar-wrapper {
   opacity: 0;
   transform: translateX(20px);
