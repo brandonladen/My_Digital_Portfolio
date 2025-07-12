@@ -144,9 +144,7 @@ const animateExperiences = () => {
                 </span>
               </div>
               <ul class="achievements">
-                <li v-for="detail in role.details" :key="detail">
-                  {{ detail }}
-                </li>
+                <li v-for="detail in role.details" :key="detail" v-html="detail"></li>
               </ul>
             </div>
           </div>

@@ -171,6 +171,7 @@ export const experiences: Experience[] = Array.of<Experience>(
             "Collaborating with developers to troubleshoot issues and provide feedback for continuous integration pipelines.",
             "Documenting test cases, test plans, and contributing to QA best practices within the API lifecycle.",
             "Learning and applying API design principles, test automation strategies, and enterprise-level QA workflows.",
+            "Learn more <a href='https://www.linkedin.com/posts/safaricom_transforminglives-activity-7348223330136526849-h5I8?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAD_aIssByLl0KzsyoXqHMABtovFQRPiD0d8' target='_blank'>here</a>.",
           ],
         },
       ],        

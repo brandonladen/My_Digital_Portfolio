@@ -35,7 +35,7 @@ onMounted(() => {
         <a href="mailto:brandonladen486@gmail.com" class="action-button">
           <i class="fas fa-envelope"></i> Contact Me
         </a>
-        <a href="/public/resume.pdf" target="_blank" class="action-button secondary">
+        <a href="https://github.com/brandonladen/My_Digital_Portfolio/raw/main/public/resume.pdf" target="_blank" class="action-button secondary">
           <i class="fas fa-download"></i> Download CV
         </a>
       </div>
