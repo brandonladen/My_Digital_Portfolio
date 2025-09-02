@@ -33,7 +33,7 @@ export let projects: Project[] = [
     tags: ["Vue 3", "Pinia", "LeafLet js", "TypeScript", "Vuetify3"],
   },
   {
-    name: "ImageSearch",
+    name: "AI Image Recognition for Missing Children",
     url: "https://github.com/Sylvester254/ImageSearch",
     gitName: "Sylvester254/ImageSearch",
     stars: "?",
@@ -43,14 +43,24 @@ export let projects: Project[] = [
     image: "/images/ImageSearch.png",
   },
   {
-    name: "SquashersMart",
-    url: "https://github.com/brandonladen/puddle_market",
-    gitName: "brandonladen/puddle_market",
+    name: "Mpesa Gateway",
+    url: "https://github.com/brandonladen/mpesa_gateway",
+    gitName: "brandonladen/mpesa_gateway",
     stars: "?",
     forks: "?",
-    description: "A web-based system functioning as an online marketplace that facilitates the marketing of products",
-    tags: ["Django", "MySQL", "HTML&CSS", "Tailwind css"],
-    image: "/images/SquashersMart.png",
+    description: "A node application that integrates with the M-Pesa API to facilitate seamless mobile money transactions, including payments, balance inquiries, and transaction history retrieval.",
+    tags: ["Node", "Mongo"],
+    image: "/images/mpesa_gateway.png",
+  },
+    {
+    name: "Live Chat App Using Websockets",
+    url: "https://github.com/brandonladen/LiveChatApp_UsingWebSockets",
+    gitName: "brandonladen/LiveChatApp_UsingWebSockets",
+    stars: "?",
+    forks: "?",
+    description: "A real-time chat application built with Django and WebSockets, enabling users to communicate instantly in a shared chat room environment.",
+    tags: ["Django", "SQLite", "HTML&CSS", "JavaScript", "WebSockets"],
+    image: "/images/live_chat_app.jpeg",
   },
    {
     name: "Jumia Clone",
@@ -161,7 +171,7 @@ export const experiences: Experience[] = Array.of<Experience>(
       logo: "images/safaricom.png", // Make sure to link the actual logo
       roles: [
         {
-          time: { start: new Date("2025-05-12"), current: true},
+          time: { start: new Date("2025-05-01"), current: true},
           jobTitle: "API Engineering Intern – QA",
           details: [
             "Working in the API Engineering team under QA to ensure the quality and reliability of Safaricom’s API services.",
@@ -198,7 +208,7 @@ export const experiences: Experience[] = Array.of<Experience>(
     logo: "images/mtrh.png", // Replace with your actual MTRH logo path
     roles: [
       {
-        time: { start: new Date("2024-05-03"), end: new Date("2024-07-31") }, // Adjust if still ongoing
+        time: { start: new Date("2024-05-01"), end: new Date("2024-08-01") },
         jobTitle: "Attachment",
         details: [
           "Assisted staff in navigating and utilizing the hospital-wide ABNO ERP system.",

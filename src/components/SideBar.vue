@@ -19,7 +19,7 @@ onMounted(() => {
         <VImg
           alt="profile image"
           class="profile"
-          src="/images/profile.jpg"
+          src="/images/profile.png"
           width="220px"
           height="220px"
           rounded="circle"
