@@ -166,12 +166,28 @@ export function openLink(url: string) {
 // Experience Data
 export const experiences: Experience[] = Array.of<Experience>(
   {
+    company: "Boxraft",
+    companyLink: "https://www.boxraft.com/",
+    logo: "images/boxraft.png",
+    roles: [
+      {
+        time: { start: new Date("2025-10-16"), current: true },
+        jobTitle: "Software Developer",
+        details: [
+          "I am working to build internal applications to help in company operations",
+          "Developing scalable software solutions using modern programming languages and frameworks",
+          "Collaborating with cross-functional teams to deliver high-quality software products on time"
+        ],
+      },
+    ],
+  },
+  {
       company: "Safaricom PLC",
       companyLink: "https://www.safaricom.co.ke",
       logo: "images/safaricom.png", // Make sure to link the actual logo
       roles: [
         {
-          time: { start: new Date("2025-05-01"), current: true},
+        time: { start: new Date("2025-05-01"), end: new Date("2025-10-11"), current: false},
           jobTitle: "API Engineering Intern – QA",
           details: [
             "Working in the API Engineering team under QA to ensure the quality and reliability of Safaricom’s API services.",
