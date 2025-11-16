@@ -6,12 +6,19 @@
     </h2>
     <div class="summary">
      <ul>
-      <li>I’m Brandon Odhiambo Wamboga, a tech enthusiast passionate about building software that creatively solves real-world problems.</li>
-      <li>I recently graduated from ALX Africa’s intensive Software Engineering program and have completed my BSc in Information Technology at Maseno University, awaiting graduation in December 2025.</li>
-      <li>I’ve developed practical solutions through hackathons—such as a missing children search system currently being incubated within CPIMS—and contributed to cybersecurity challenges.</li>
-      <li>My passion for backend development spans Django, Flask, and Node.js, while my frontend stack includes Vue.js and HTML/CSS.</li>
-      <li>I value leadership and collaboration, often guiding peers in both tech and academic spaces.</li>
-      <li>Above all, I’m driven by resilience, creativity, and a mindset of continuous learning and contribution.</li>
+      <li>I’m Brandon Odhiambo Wamboga, a software engineer passionate about building impactful and user-focused solutions.</li>
+
+      <li>I graduated with a BSc in Information Technology from Maseno University and also completed ALX Africa’s intensive Software Engineering program.</li>
+
+      <li>I’m currently a Software Developer at Boxraft, where I build internal applications that support company operations, develop scalable software solutions, and collaborate with cross-functional teams to deliver high-quality products.</li>
+
+      <li>Previously, I interned at Safaricom PLC as an API Engineering Intern – QA, working within the API Engineering team to ensure the quality, reliability, and performance of Safaricom’s API services. My role included test automation, API validation, regression testing, and contributing to QA best practices.</li>
+
+      <li>I’ve also built practical solutions through hackathons—such as a missing-children search system now being incubated within CPIMS—and I enjoy solving cybersecurity challenges.</li>
+
+      <li>My backend experience spans Django, Flask, and Node.js, while my frontend stack includes Vue.js and HTML/CSS.</li>
+
+      <li>I value leadership, collaboration, and continuous learning, and I thrive in environments where creativity meets purposeful engineering.</li>
     </ul>
     </div>
   </section>
