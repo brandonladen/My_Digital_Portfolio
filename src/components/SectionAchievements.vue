@@ -7,6 +7,9 @@
     <div class="achievements">
       <ul>
         <li>
+          <strong>2025 – M-PESA Fintech 2.0 Upgrade – Quality Assurance Contributor:</strong> Contributed to QA activities for a long-running M-PESA core system upgrade. Participated in testing during planned downtimes and post-migration phases. Verified system readiness and service stability before public release. Supported successful go-live of upgraded financial services at national scale.
+        </li>
+        <li>
           <strong>5th May 2023 – 7th May 2023:</strong> I participated in the Maseno University Hackathon 2023, HealthIT. Together with a team of two, I gained real-life experience working with software. We implemented a face progression system based on the current age of the child from the age when the photo was taken and provided an API key endpoint. Our project was incubated as the winning system and later incorporated into CPIMS (uonafya).
         </li>
         <li>
