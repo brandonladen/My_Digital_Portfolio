@@ -6,17 +6,11 @@
     </h2>
     <div class="summary">
      <ul>
-      <li>I’m Brandon Odhiambo Wamboga, a software engineer passionate about building impactful and user-focused solutions.</li>
-
-      <li>I graduated with a BSc in Information Technology from Maseno University and also completed ALX Africa’s intensive Software Engineering program.</li>
-
-      <li>I’m currently a Software Developer at Boxraft, where I build internal applications that support company operations, develop scalable software solutions, and collaborate with cross-functional teams to deliver high-quality products.</li>
-
+      <li>I’m Brandon Odhiambo Wamboga, currently a Software Developer at Boxraft</li>
+       
       <li>Previously, I interned at Safaricom PLC as an API Engineering Intern – QA, working within the API Engineering team to ensure the quality, reliability, and performance of Safaricom’s API services. My role included test automation, API validation, regression testing, and contributing to QA best practices.</li>
 
-      <li>I’ve also built practical solutions through hackathons—such as a missing-children search system now being incubated within CPIMS—and I enjoy solving cybersecurity challenges.</li>
-
-      <li>My backend experience spans Django, Flask, and Node.js, while my frontend stack includes Vue.js and HTML/CSS.</li>
+      <li>I’ve also built practical solutions through hackathons—such as a missing-child system now being incubated within Child Protection Information Management System under HealthIT</li>
 
       <li>I value leadership, collaboration, and continuous learning, and I thrive in environments where creativity meets purposeful engineering.</li>
     </ul>
