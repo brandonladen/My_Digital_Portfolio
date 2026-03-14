@@ -1,5 +1,5 @@
 import type { Education, Experience, Language, Skill } from "@/types/Types.ts";
-import axios from "axios";
+import axios, { type AxiosResponse } from "axios";
 
 // Project & Contributor Interfaces
 export interface Contributor {
@@ -19,6 +19,19 @@ export interface Project {
   description?: string;
   tags: string[];
   contributors?: Contributor[];
+}
+
+// GitHub API response shapes
+interface GitHubRepo {
+  stargazers_count: number;
+  forks_count: number;
+}
+
+interface GitHubContributor {
+  login: string;
+  avatar_url: string;
+  html_url: string;
+  contributions: number;
 }
 
 export let projects: Project[] = [
@@ -102,6 +115,22 @@ function safeLocalStorage(action: "get" | "set", key: string, value?: string) {
   }
 }
 
+// Fetch a single project's GitHub data — typed, no array indexing
+async function fetchProjectData(gitName: string): Promise<{
+  repo: AxiosResponse<GitHubRepo>;
+  contributors: AxiosResponse<GitHubContributor[]>;
+} | null> {
+  if (!gitName.includes("/")) return null;
+  const [owner, repo] = gitName.split("/");
+  const [repoRes, contributorsRes] = await Promise.all([
+    axios.get<GitHubRepo>(`https://api.github.com/repos/${owner}/${repo}`),
+    axios.get<GitHubContributor[]>(
+      `https://api.github.com/repos/${owner}/${repo}/contributors`,
+    ),
+  ]);
+  return { repo: repoRes, contributors: contributorsRes };
+}
+
 // Fetch project data with caching
 export function getProjectWithStars(onFinish: (result: Project[]) => void) {
   const now = Date.now();
@@ -112,40 +141,29 @@ export function getProjectWithStars(onFinish: (result: Project[]) => void) {
     if (now < parsedCache.expires) return onFinish(parsedCache.data);
   }
 
-  const requests = projects.map(({ gitName }) => {
-    if (!gitName.includes("/")) return Promise.resolve(null);
-    const [owner, repo] = gitName.split("/");
-    return axios.all([
-      axios.get(`https://api.github.com/repos/${owner}/${repo}`),
-      axios.get(`https://api.github.com/repos/${owner}/${repo}/contributors`),
-    ]);
-  });
+  const requests = projects.map(({ gitName }) =>
+    fetchProjectData(gitName).catch(() => null),
+  );
 
-  Promise.allSettled(requests).then((results) => {
+  Promise.all(requests).then((results) => {
     results.forEach((result, index) => {
-      if (result.status === "fulfilled" && result.value) {
-        // FIX: cast to any[] first — axios.all types as unknown[] in newer versions
-        const responses = result.value as any[];
-        const repoResponse = responses[0];
-        const contributorsResponse = responses[1];
+      const project = projects[index];
+      if (!project) return;
 
-        if (repoResponse && contributorsResponse) {
-          projects[index].stars = repoResponse.data.stargazers_count.toString();
-          projects[index].forks = repoResponse.data.forks_count.toString();
-          projects[index].contributors = contributorsResponse.data.map(
-            (c: any) => ({
-              login: c.login,
-              avatar_url: c.avatar_url,
-              html_url: c.html_url,
-              contributions: c.contributions,
-            }),
-          );
-        }
+      if (result) {
+        project.stars = result.repo.data.stargazers_count.toString();
+        project.forks = result.repo.data.forks_count.toString();
+        project.contributors = result.contributors.data.map((c) => ({
+          login: c.login,
+          avatar_url: c.avatar_url,
+          html_url: c.html_url,
+          contributions: c.contributions,
+        }));
       } else {
-        console.error(`Error fetching data for ${projects[index].name}`);
-        projects[index].stars = "?";
-        projects[index].forks = "?";
-        projects[index].contributors = [];
+        console.error(`Error fetching data for ${project.name}`);
+        project.stars = "?";
+        project.forks = "?";
+        project.contributors = [];
       }
     });
 
