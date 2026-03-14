@@ -174,10 +174,11 @@ export const experiences: Experience[] = Array.of<Experience>(
         time: { start: new Date("2025-10-16"), current: true },
         jobTitle: "Software Developer",
         details: [
-          "I am working to build internal applications to help in company operations",
-          "Developing scalable software solutions using modern programming languages and frameworks",
-          "Collaborating with cross-functional teams to deliver high-quality software products on time"
-        ],
+        "Supporting, building, and redesigning websites for client companies across multiple industries",
+        "Managing full-cycle web projects — from discovery and wireframing through to launch and ongoing maintenance",
+        "Building internal tools and applications to streamline company operations",
+        "Collaborating with designers and developers to deliver scalable, high-quality digital products on time",
+      ],
       },
     ],
   },
@@ -208,7 +209,7 @@ export const experiences: Experience[] = Array.of<Experience>(
     logo: "images/SecreteStartups.png", // Add logo path if available
     roles: [
       {
-        time: { start: new Date("2024-08-01"), current: true },
+        time: { start: new Date("2024-08-01"), new Date("2025-11-30")},
         jobTitle: "Backend Developer",
         details: [
           "Developing and managing microservices using Node.js, MongoDB, Redis, Kafka, and Dapr.",
