@@ -48,7 +48,8 @@ export let projects: Project[] = [
     gitName: "brandonladen/mpesa_gateway",
     stars: "?",
     forks: "?",
-    description: "A node application that integrates with the M-Pesa API to facilitate seamless mobile money transactions, including payments, balance inquiries, and transaction history retrieval.",
+    description:
+      "A node application that integrates with the M-Pesa API to facilitate seamless mobile money transactions, including payments, balance inquiries, and transaction history retrieval.",
     tags: ["Node", "Mongo"],
     image: "/images/mpesa_gateway.png",
   },
@@ -58,7 +59,8 @@ export let projects: Project[] = [
     gitName: "brandonladen/LiveChatApp_UsingWebSockets",
     stars: "?",
     forks: "?",
-    description: "A real-time chat application built with Django and WebSockets, enabling users to communicate instantly in a shared chat room environment.",
+    description:
+      "A real-time chat application built with Django and WebSockets, enabling users to communicate instantly in a shared chat room environment.",
     tags: ["Django", "SQLite", "HTML&CSS", "JavaScript", "WebSockets"],
     image: "/images/live_chat_app.jpeg",
   },
@@ -68,7 +70,8 @@ export let projects: Project[] = [
     gitName: "brandonladen/jumia_clone",
     stars: "?",
     forks: "?",
-    description: "Jumia e-commerce platform clone with product listings, user authentication, and shopping features",
+    description:
+      "Jumia e-commerce platform clone with product listings, user authentication, and shopping features",
     tags: ["Django", "MySQL", "HTML&CSS", "Bootstrap"],
     image: "/images/jumia.jpg",
   },
@@ -78,7 +81,8 @@ export let projects: Project[] = [
     gitName: "brandonladen/SubnetEaseProCalc",
     stars: "?",
     forks: "?",
-    description: "IP Subnet Calculator that helps users calculate and understand subnet information",
+    description:
+      "IP Subnet Calculator that helps users calculate and understand subnet information",
     tags: ["JavaScript", "AJAX", "API", "Networking", "Bootstrap", "Django"],
     image: "/images/subnet-calculator.jpg",
   },
@@ -108,7 +112,6 @@ export function getProjectWithStars(onFinish: (result: Project[]) => void) {
     if (now < parsedCache.expires) return onFinish(parsedCache.data);
   }
 
-  // Prepare API Requests
   const requests = projects.map(({ gitName }) => {
     if (!gitName.includes("/")) return Promise.resolve(null);
     const [owner, repo] = gitName.split("/");
@@ -121,20 +124,21 @@ export function getProjectWithStars(onFinish: (result: Project[]) => void) {
   Promise.allSettled(requests).then((results) => {
     results.forEach((result, index) => {
       if (result.status === "fulfilled" && result.value) {
-        // FIX: destructure then guard — each element may be undefined
-        const [repoResponse, contributorsResponse] = result.value;
-        if (repoResponse && contributorsResponse) {
-          projects[index].stars = repoResponse.data.stargazers_count.toString();
-          projects[index].forks = repoResponse.data.forks_count.toString();
-          projects[index].contributors = contributorsResponse.data.map(
-            (c: any) => ({
-              login: c.login,
-              avatar_url: c.avatar_url,
-              html_url: c.html_url,
-              contributions: c.contributions,
-            }),
-          );
-        }
+        // FIX: cast to explicit tuple so TS does not treat elements as possibly undefined
+        const [repoResponse, contributorsResponse] = result.value as [
+          Awaited<ReturnType<typeof axios.get>>,
+          Awaited<ReturnType<typeof axios.get>>,
+        ];
+        projects[index].stars = repoResponse.data.stargazers_count.toString();
+        projects[index].forks = repoResponse.data.forks_count.toString();
+        projects[index].contributors = contributorsResponse.data.map(
+          (c: any) => ({
+            login: c.login,
+            avatar_url: c.avatar_url,
+            html_url: c.html_url,
+            contributions: c.contributions,
+          }),
+        );
       } else {
         console.error(`Error fetching data for ${projects[index].name}`);
         projects[index].stars = "?";
