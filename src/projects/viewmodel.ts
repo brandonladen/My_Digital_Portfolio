@@ -124,21 +124,23 @@ export function getProjectWithStars(onFinish: (result: Project[]) => void) {
   Promise.allSettled(requests).then((results) => {
     results.forEach((result, index) => {
       if (result.status === "fulfilled" && result.value) {
-        // FIX: cast to explicit tuple so TS does not treat elements as possibly undefined
-        const [repoResponse, contributorsResponse] = result.value as [
-          Awaited<ReturnType<typeof axios.get>>,
-          Awaited<ReturnType<typeof axios.get>>,
-        ];
-        projects[index].stars = repoResponse.data.stargazers_count.toString();
-        projects[index].forks = repoResponse.data.forks_count.toString();
-        projects[index].contributors = contributorsResponse.data.map(
-          (c: any) => ({
-            login: c.login,
-            avatar_url: c.avatar_url,
-            html_url: c.html_url,
-            contributions: c.contributions,
-          }),
-        );
+        // FIX: cast to any[] first — axios.all types as unknown[] in newer versions
+        const responses = result.value as any[];
+        const repoResponse = responses[0];
+        const contributorsResponse = responses[1];
+
+        if (repoResponse && contributorsResponse) {
+          projects[index].stars = repoResponse.data.stargazers_count.toString();
+          projects[index].forks = repoResponse.data.forks_count.toString();
+          projects[index].contributors = contributorsResponse.data.map(
+            (c: any) => ({
+              login: c.login,
+              avatar_url: c.avatar_url,
+              html_url: c.html_url,
+              contributions: c.contributions,
+            }),
+          );
+        }
       } else {
         console.error(`Error fetching data for ${projects[index].name}`);
         projects[index].stars = "?";
