@@ -59,8 +59,10 @@ onMounted(() => {
   if (sectionRef.value) {
     const { stop } = useIntersectionObserver(
       sectionRef.value,
-      ([{ isIntersecting }]) => {
-        if (isIntersecting) {
+      (entries) => {
+        // FIX: access entry safely — entries[0] may be undefined
+        const entry = entries[0];
+        if (entry?.isIntersecting) {
           animateExperiences();
           stop();
         }
