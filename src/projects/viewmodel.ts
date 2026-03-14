@@ -52,7 +52,7 @@ export let projects: Project[] = [
     tags: ["Node", "Mongo"],
     image: "/images/mpesa_gateway.png",
   },
-    {
+  {
     name: "Live Chat App Using Websockets",
     url: "https://github.com/brandonladen/LiveChatApp_UsingWebSockets",
     gitName: "brandonladen/LiveChatApp_UsingWebSockets",
@@ -62,7 +62,7 @@ export let projects: Project[] = [
     tags: ["Django", "SQLite", "HTML&CSS", "JavaScript", "WebSockets"],
     image: "/images/live_chat_app.jpeg",
   },
-   {
+  {
     name: "Jumia Clone",
     url: "https://github.com/brandonladen/jumia_clone",
     gitName: "brandonladen/jumia_clone",
@@ -81,7 +81,7 @@ export let projects: Project[] = [
     description: "IP Subnet Calculator that helps users calculate and understand subnet information",
     tags: ["JavaScript", "AJAX", "API", "Networking", "Bootstrap", "Django"],
     image: "/images/subnet-calculator.jpg",
-  }
+  },
 ];
 
 // Cache Constants
@@ -121,17 +121,20 @@ export function getProjectWithStars(onFinish: (result: Project[]) => void) {
   Promise.allSettled(requests).then((results) => {
     results.forEach((result, index) => {
       if (result.status === "fulfilled" && result.value) {
+        // FIX: destructure then guard — each element may be undefined
         const [repoResponse, contributorsResponse] = result.value;
-        projects[index].stars = repoResponse.data.stargazers_count.toString();
-        projects[index].forks = repoResponse.data.forks_count.toString();
-        projects[index].contributors = contributorsResponse.data.map(
-          (c: any) => ({
-            login: c.login,
-            avatar_url: c.avatar_url,
-            html_url: c.html_url,
-            contributions: c.contributions,
-          }),
-        );
+        if (repoResponse && contributorsResponse) {
+          projects[index].stars = repoResponse.data.stargazers_count.toString();
+          projects[index].forks = repoResponse.data.forks_count.toString();
+          projects[index].contributors = contributorsResponse.data.map(
+            (c: any) => ({
+              login: c.login,
+              avatar_url: c.avatar_url,
+              html_url: c.html_url,
+              contributions: c.contributions,
+            }),
+          );
+        }
       } else {
         console.error(`Error fetching data for ${projects[index].name}`);
         projects[index].stars = "?";
@@ -174,42 +177,42 @@ export const experiences: Experience[] = Array.of<Experience>(
         time: { start: new Date("2025-10-16"), current: true },
         jobTitle: "Software Developer",
         details: [
-        "Supporting, building, and redesigning websites for client companies across multiple industries",
-        "Managing full-cycle web projects — from discovery and wireframing through to launch and ongoing maintenance",
-        "Building internal tools and applications to streamline company operations",
-        "Collaborating with designers and developers to deliver scalable, high-quality digital products on time",
-      ],
+          "Supporting, building, and redesigning websites for client companies across multiple industries",
+          "Managing full-cycle web projects — from discovery and wireframing through to launch and ongoing maintenance",
+          "Building internal tools and applications to streamline company operations",
+          "Collaborating with designers and developers to deliver scalable, high-quality digital products on time",
+        ],
       },
     ],
   },
   {
-      company: "Safaricom PLC",
-      companyLink: "https://www.safaricom.co.ke",
-      logo: "images/safaricom.png", // Make sure to link the actual logo
-      roles: [
-        {
-        time: { start: new Date("2025-05-01"), end: new Date("2025-10-11"), current: false},
-          jobTitle: "API Engineering Intern – QA",
-          details: [
-            "Working in the API Engineering team under QA to ensure the quality and reliability of Safaricom’s API services.",
-            "Creating and maintaining automated test scripts for RESTful APIs using tools such as Postman, Newman.",
-            "Participating in regression, performance, and functional testing of internal and public-facing APIs.",
-            "Validating API responses, error handling, and schema compliance across microservices.",
-            "Collaborating with developers to troubleshoot issues and provide feedback for continuous integration pipelines.",
-            "Documenting test cases, test plans, and contributing to QA best practices within the API lifecycle.",
-            "Learning and applying API design principles, test automation strategies, and enterprise-level QA workflows.",
-            "Learn more <a href='https://www.linkedin.com/posts/safaricom_transforminglives-activity-7348223330136526849-h5I8?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAD_aIssByLl0KzsyoXqHMABtovFQRPiD0d8' target='_blank'>here</a>.",
-          ],
-        },
-      ],        
+    company: "Safaricom PLC",
+    companyLink: "https://www.safaricom.co.ke",
+    logo: "images/safaricom.png",
+    roles: [
+      {
+        time: { start: new Date("2025-05-01"), end: new Date("2025-10-11"), current: false },
+        jobTitle: "API Engineering Intern – QA",
+        details: [
+          "Working in the API Engineering team under QA to ensure the quality and reliability of Safaricom's API services.",
+          "Creating and maintaining automated test scripts for RESTful APIs using tools such as Postman, Newman.",
+          "Participating in regression, performance, and functional testing of internal and public-facing APIs.",
+          "Validating API responses, error handling, and schema compliance across microservices.",
+          "Collaborating with developers to troubleshoot issues and provide feedback for continuous integration pipelines.",
+          "Documenting test cases, test plans, and contributing to QA best practices within the API lifecycle.",
+          "Learning and applying API design principles, test automation strategies, and enterprise-level QA workflows.",
+          "Learn more <a href='https://www.linkedin.com/posts/safaricom_transforminglives-activity-7348223330136526849-h5I8?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAD_aIssByLl0KzsyoXqHMABtovFQRPiD0d8' target='_blank'>here</a>.",
+        ],
+      },
+    ],
   },
   {
     company: "SecreteStartups, UK",
     companyLink: "https://secretstartups.org/",
-    logo: "images/SecreteStartups.png", // Add logo path if available
+    logo: "images/SecreteStartups.png",
     roles: [
       {
-        time: { start: new Date("2024-08-01"), end: new Date("2025-11-30")},
+        time: { start: new Date("2024-08-01"), end: new Date("2025-11-30") },
         jobTitle: "Backend Developer",
         details: [
           "Developing and managing microservices using Node.js, MongoDB, Redis, Kafka, and Dapr.",
@@ -222,7 +225,7 @@ export const experiences: Experience[] = Array.of<Experience>(
   {
     company: "Moi Teaching and Referral Hospital",
     companyLink: "https://www.mtrh.go.ke/",
-    logo: "images/mtrh.png", // Replace with your actual MTRH logo path
+    logo: "images/mtrh.png",
     roles: [
       {
         time: { start: new Date("2024-05-01"), end: new Date("2024-08-01") },
@@ -241,118 +244,28 @@ export const experiences: Experience[] = Array.of<Experience>(
 
 export const skills: Skill[] = [
   // Languages
-  {
-    title: "Python",
-    level: 95,
-    icon: "devicon-python-plain",
-    color: "colored",
-  },
-  {
-    title: "JavaScript",
-    level: 90,
-    icon: "devicon-javascript-plain",
-    color: "colored",
-  },
-  {
-    title: "Java",
-    level: 85,
-    icon: "devicon-java-plain-wordmark",
-    color: "colored",
-  },
-  {
-    title: "PHP",
-    level: 80,
-    icon: "devicon-php-plain",
-    color: "colored",
-  },
-  {
-    title: "C",
-    level: 80,
-    icon: "devicon-c-plain",
-    color: "colored",
-  },
-  {
-    title: "C++",
-    level: 80,
-    icon: "devicon-cplusplus-plain",
-    color: "colored",
-  },
-  {
-    title: "HTML5",
-    level: 95,
-    icon: "devicon-html5-plain-wordmark",
-    color: "colored",
-  },
-  {
-    title: "CSS3",
-    level: 90,
-    icon: "devicon-css3-plain-wordmark",
-    color: "colored",
-  },
+  { title: "Python", level: 95, icon: "devicon-python-plain", color: "colored" },
+  { title: "JavaScript", level: 90, icon: "devicon-javascript-plain", color: "colored" },
+  { title: "Java", level: 85, icon: "devicon-java-plain-wordmark", color: "colored" },
+  { title: "PHP", level: 80, icon: "devicon-php-plain", color: "colored" },
+  { title: "C", level: 80, icon: "devicon-c-plain", color: "colored" },
+  { title: "C++", level: 80, icon: "devicon-cplusplus-plain", color: "colored" },
+  { title: "HTML5", level: 95, icon: "devicon-html5-plain-wordmark", color: "colored" },
+  { title: "CSS3", level: 90, icon: "devicon-css3-plain-wordmark", color: "colored" },
 
   // Frameworks & Libraries
-  {
-    title: "Django",
-    level: 90,
-    icon: "devicon-django-plain",
-    color: "colored",
-  },
-  {
-    title: "Flask",
-    level: 75,
-    icon: "devicon-flask-original",
-    color: "colored",
-  },
-  {
-    title: "Vue.js",
-    level: 90,
-    icon: "devicon-vuejs-plain",
-    color: "colored",
-  },
-  {
-    title: "Node.js",
-    level: 85,
-    icon: "devicon-nodejs-plain",
-    color: "colored",
-  },
-  {
-    title: "Bootstrap",
-    level: 85,
-    icon: "devicon-bootstrap-plain",
-    color: "colored",
-  },
+  { title: "Django", level: 90, icon: "devicon-django-plain", color: "colored" },
+  { title: "Flask", level: 75, icon: "devicon-flask-original", color: "colored" },
+  { title: "Vue.js", level: 90, icon: "devicon-vuejs-plain", color: "colored" },
+  { title: "Node.js", level: 85, icon: "devicon-nodejs-plain", color: "colored" },
+  { title: "Bootstrap", level: 85, icon: "devicon-bootstrap-plain", color: "colored" },
 
   // Tools & Platforms
-  {
-    title: "Dapr",
-    level: 70,
-    icon: "devicon-dapr-plain", // May need a custom icon if devicon doesn't support it
-    color: "colored",
-  },
-  {
-    title: "Apache Kafka",
-    level: 75,
-    icon: "devicon-apachekafka-original", // Or fallback if not available
-    color: "colored",
-  },
-  {
-    title: "Redis",
-    level: 80,
-    icon: "devicon-redis-plain",
-    color: "colored",
-  },
-  {
-    title: "Git & GitHub",
-    level: 95,
-    icon: "devicon-git-plain",
-    color: "colored",
-  },
-  {
-    title: "Linux",
-    level: 85,
-    icon: "devicon-linux-plain",
-    color: "colored",
-  },
+  { title: "Dapr", level: 70, icon: "devicon-dapr-plain", color: "colored" },
+  { title: "Apache Kafka", level: 75, icon: "devicon-apachekafka-original", color: "colored" },
+  { title: "Redis", level: 80, icon: "devicon-redis-plain", color: "colored" },
+  { title: "Git & GitHub", level: 95, icon: "devicon-git-plain", color: "colored" },
+  { title: "Linux", level: 85, icon: "devicon-linux-plain", color: "colored" },
 ];
 
 // Education Data
