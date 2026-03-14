@@ -209,7 +209,7 @@ export const experiences: Experience[] = Array.of<Experience>(
     logo: "images/SecreteStartups.png", // Add logo path if available
     roles: [
       {
-        time: { start: new Date("2024-08-01"), new Date("2025-11-30")},
+        time: { start: new Date("2024-08-01"), end: new Date("2025-11-30")},
         jobTitle: "Backend Developer",
         details: [
           "Developing and managing microservices using Node.js, MongoDB, Redis, Kafka, and Dapr.",
