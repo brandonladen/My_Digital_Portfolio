@@ -29,7 +29,7 @@ onMounted(() => {
         />
       </div>
       <h1 class="name">Brandon Odhiambo</h1>
-      <h3 class="tagline">Junior Software Engineer</h3>
+      <h3 class="tagline">Software Developer</h3>
 
       <div class="profile-actions">
         <a href="mailto:brandonladen486@gmail.com" class="action-button">

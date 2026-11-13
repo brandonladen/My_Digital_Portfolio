@@ -7,6 +7,9 @@
     <div class="achievements">
       <ul>
         <li>
+          <strong>2026 – CyberWeek Africa 2026 – 1st Place, Open Track:</strong> My team won first place in the Open Track at CyberWeek Africa 2026. The event brought together cybersecurity professionals, innovators, industry leaders, government representatives and young talent from across Africa to explore cybersecurity in the age of AI. <a target="_blank" href="https://lnkd.in/p/dQeQUwtj">Learn more</a>
+        </li>
+        <li>
           <strong>2025 – M-PESA Fintech 2.0 Upgrade – Quality Assurance Contributor:</strong> Contributed to QA activities for a long-running M-PESA core system upgrade. Participated in testing during planned downtimes and post-migration phases. Verified system readiness and service stability before public release. Supported successful go-live of upgraded financial services at national scale.
         </li>
         <li>
