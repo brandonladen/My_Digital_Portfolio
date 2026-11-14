@@ -36,6 +36,17 @@ interface GitHubContributor {
 
 export let projects: Project[] = [
   {
+    name: "PaperForge AI",
+    image: "/images/paperforge.png",
+    url: "https://github.com/brandonladen/PaperForgeAI",
+    gitName: "brandonladen/PaperForgeAI",
+    stars: "?",
+    forks: "?",
+    description:
+      "A web tool that turns algorithm and systems research papers into complete, runnable MVP projects in Python or Node.js, using a Planning → Analysis → Coding AI pipeline with auto-debugging and one-command Docker deployment.",
+    tags: ["Python", "Flask", "OpenAI", "Gemini", "Docker", "AI"],
+  },
+  {
     name: "geoSpartial_village",
     image: "/images/geosparcial.jpeg",
     url: "https://github.com/stephenWanjala/geoSpartial_village",
